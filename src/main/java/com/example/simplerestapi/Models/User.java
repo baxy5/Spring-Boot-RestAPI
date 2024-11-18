@@ -11,8 +11,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nickname", nullable = false, length = 50)
-    private String nickname;
+    @Column(name = "username", nullable = false, length = 50)
+    private String username;
 
     @Column(name = "password", nullable = false, length = 255)
     private String password;
@@ -26,12 +26,16 @@ public class User {
     @Column(name = "created_at", columnDefinition = "DATE DEFAULT CURRENT_DATE")
     private LocalDate created_at = LocalDate.now();
 
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
@@ -50,12 +54,16 @@ public class User {
         this.created_at = created_at;
     }
 
+    public void setRole(Role role){
+        this.role = role;
+    }
+
     public Long getId() {
         return id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
     public String getPassword() {
@@ -72,5 +80,9 @@ public class User {
 
     public LocalDate getCreated_at() {
         return created_at;
+    }
+
+    public Role getRole(){
+        return role;
     }
 }
