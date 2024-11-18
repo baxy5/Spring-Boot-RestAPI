@@ -1,5 +1,6 @@
-package com.example.simplerestapi.Models;
+package com.example.simplerestapi.Repositories;
 
+import com.example.simplerestapi.Models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
